@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" cont >
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"> </script>
+
+</head>
+
+<body>
+    <div id="root">
+        <h1>hello {{msg}}</h1>
+        <hr />
+        <h1 v-if="awesome">
+            <p>v-if Vue is awesome!</p>
+        </h1>
+        <h3 v-else>
+            <p>Oh no 😢</p>
+        </h3>
+        <h1 v-show="awesome">
+            <p>v-show Vue is awesome!</p>
+        </h1>
+        <hr>
+        <!-- v-else 元素必须紧跟在带 v-if 或者 v-else-if 的元素的后面，否则它将不会被识别。 -->
+        <!-- 因为 v-if 是一个指令，所以必须将它添加到一个元素上 -->
+        <!-- 最终的渲染结果将不包含 <template> 元素 -->
+        <template v-if="awesome">
+            <h1>Title</h1>
+            <p>Paragraph1</p>
+            <p>Paragraph2</p>
+
+        </template>
+        <template v-else>
+            <p>😢-^^-😢</p>
+        </template>
+        <hr>
+        <!-- Vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染。 -->
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="1">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="2">
+        </template>
+
+        <!-- <input> 不会被替换掉——仅仅是替换了它的 placeholder -->
+        <!-- 只需添加一个具有唯一值的 key attribute 即可： -->
+        <button @click="toggle">Toggle login type</button>
+    </div>
+
+    <script>
+
+        var app = new Vue({
+            el: "#root",
+            data: {
+                awesome: true,
+                msg: "nick",
+                loginType: "username",
+            },
+            methods: {
+                toggle: function () {
+                    console.log(123);
+                    this.loginType =
+                        this.loginType === "username" ? "email" : "username"
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

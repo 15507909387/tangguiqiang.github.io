@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            <!-- 使用 router-link 组件来导航. -->
+            <!-- 通过传入 `to` 属性指定链接. -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+            <router-link to="/">Go to Home</router-link>
+            <router-link to="/about">Go to About</router-link>
+            <router-link to="/user">Go to User</router-link>
+            <hr>
+            <router-link to="/user/nick">Go to nick</router-link>
+            <router-link to="/user/mark">Go to mark</router-link>
+            <router-link to="/user/nicholas">Go to nicholas</router-link>
+
+        </p>
+
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+        <!-- 一个“路径参数”使用冒号 : 标记。当匹配到一个路由时，
+        参数值会被设置到 this.$route.params，可以在每个组件内使用 -->
+
+    </div>
+
+    <script>
+
+        var Home = { template: "<div>Home page</div>" };
+        var About = { template: "<div>About page</div>" };
+        var UserList = { template: "<div>UserLick page</div>" };
+        var User = { template: "<div>User page  {{$route.params}}</div>" };
+
+        var app = new Vue({
+            el: "#app",
+            router: new VueRouter({
+                routes: [
+                    {
+                        path: "/",
+                        component: Home,
+                    },
+                    {
+                        path: "/about",
+                        component: About,
+                    },
+                    {
+                        path: "/user",
+                        component: UserList,
+                    },
+                    {
+                        path: "/user/:id",
+                        component: User,
+                    },
+
+                ]
+            })
+        })
+    </script>
+</body>
+
+</html>

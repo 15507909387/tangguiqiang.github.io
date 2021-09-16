@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    body {
+        margin: 0;
+        background-color: #222;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        /* 清除圆点 */
+        list-style: none;
+    }
+
+    .stage {
+        /* 弹性盒子 */
+        display: flex;
+    }
+
+    </style>
+</head>
+<body>
+    <section class="stage"></section>
+    <script>
+        function Num(x) {
+            this.num = x;
+        }
+        console.log(this.num)
+
+        // 根据数值获取坐标
+        //prototype 属性允许您向对象添加属性和方法
+        Num.prototype.calcCoor = function(){
+            return matrix[this.num]
+        };
+
+        // 创建每个数字的所有dom元素
+        Num.prototype.create = function () {
+            this.coor = this.calcCoor();
+           
+
+            var content = document.createElement("ul");
+            content.classList.add("content");
+
+            //根据coor二位数组 生成 dom节点 并把节点也映射为二位坐标 并保存到当前对象nodes属性
+            //这里保存到nodes目的是方便后面更新获取 所有的dot节点
+            //nodes格式为二维数组 方便后面根据coor更新 以为数组也可以比较麻烦
+            var nodes = [];
+            this.coor.forEach(function (row, rowIndex) {
+                var rowNodes = [];
+                row.forEach(function (col, colIndex) {
+                    var dot = document.createElement("li");
+                    rowNodes.push(dot);
+                    content.appendChild(dot);
+                });
+                nodes.push(rowNodes)
+            });
+
+            // 将所有节点数组保存到属性
+            this.nodes = nodes
+
+            document.querySelector(".stage").appendChild(content);
+
+            return this;
+        };
+
+        // 根据当前数值更新坐标并更新所有dot的class
+        Num.prototype.update = function (n) {
+            // 更新num coor
+
+            if (n !== undefined) {
+                this.num = n;
+            }
+
+            this.coor = this.calcCoor();
+
+            // 根据新坐标重新确定每个点的class
+            var _this = this;
+            // forEach内部 this指向 window
+            this.coor.forEach(function (row,rowIndex) {
+                row.forEach(function (col, colIndex) {
+                    if (col) {
+                        _this.nodes[rowIndex][colIndex].classList.add("active")
+                    }
+                })
+            }
+        
+    
+
+       
+
+
+    </script>
+</body>
+</html>

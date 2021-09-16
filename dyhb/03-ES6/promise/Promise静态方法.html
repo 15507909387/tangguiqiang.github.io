@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p></p>
+    <script>
+
+        function delay(ms) {
+            let p = new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    //把数字转换为字符串，结果的小数点后有指定位数的数字：
+                    var n = (Math.random() - 0.5).toFixed(2);
+                    var t = Date.now();
+                    if (n > 0) {
+                        resolve(`${n}-${t}`);
+                        console.log("成功");
+                    } else {
+                        reject(`${n}-${t}`);
+                    }
+                }, ms);
+
+            });
+            return p;
+        }
+
+        // console.log(delay(1000));
+
+        //按顺序异步 后一个依赖前一个
+        // var p1 = delay(3000);
+        // p1.then(function (res1) {
+        //     console.log("p1完成", res1);
+        //     delay(2000).then(function (res2) {
+        //         console.log("p2完成", res2);
+        //     });
+        // });
+        // console.log(p1);
+
+
+        // async函数
+        //   按照顺序同时执行异步 没有依赖
+        //   所有都成功 并且需要保证异步结果的顺序
+        console.log("start", Date.now());
+        var p3 = delay(2000);
+        var p4 = delay(3000);
+        var p5 = delay(1000);
+        p3.then((res) => console.log("p3", res));
+        p4.then((res) => console.log("p4", res));
+        p5.then((res) => console.log("p5", res));
+
+        //   保证所有成功
+        Promise.all([p3, p4, p5]).then((res) => console.log("all", res));
+
+        //   只管第一个完成
+        Promise.race([p3, p4, p5]).then(function (res) {
+            console.log("race", res);
+        });
+
+        //   保证所有完成
+        Promise.allSettled([p3, p4, p5]).then((res) => console.log("allSettled", res));
+
+        //  有一个成功  如果都失败整体失败
+        Promise.any([p3, p4, p5]).then((res) => console.log("any", res));
+
+        /* aaaaaaaaaaaaa */
+        Promise.resolve("foo");
+        // 等价于
+        new Promise((resolve) => resolve("foo"));
+
+        new Promise(function (resolve) {
+            resolve("foo");
+        });
+
+        const p = Promise.resolve();
+        console.log(p);
+
+        // https://www.cnblogs.com/wangziye/p/9566454.html
+
+      // setTimeout(fn, 0)在下一轮“事件循环”开始时执行， 宏任务
+      // Promise.resolve()在本轮“事件循环”结束时执行 微任务
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+
+// console.log(String.fromCharCode(0x20BB7)); 
+// console.log(String.raw`Hi\n${2+3}!`);
+// console.log(String.raw({ raw: ['foo', 'bar'] }, 1 + 2));
+
+// var s = "𠮷";
+
+// s.length // 2
+// //charAt（x） 返回字符串，x表示第几个字符
+// s.charAt(0) // ''
+// s.charAt(1) // ''
+// //charCodeAt()方法只能分别返回前两个字节和后两个字节的值。
+// s.charCodeAt(0) // 55362
+// s.charCodeAt(1) // 57271
+
+//ES6 提供了codePointAt()方法，能够正确处理 4 个字节储存的字符，返回一个字符的码点。
+let s = '𠮷a';
+
+s.codePointAt(0) // 134071
+s.codePointAt(1) // 57271
+
+s.codePointAt(2) // 97
+
+//toString() 转换成十六进制
+s.codePointAt(0).toString(16) // "20bb7"
+
+
+console.log(1,[2,3,4],5)
+console.log(1, ...[2, 3, 4], 5)
+
+
+
+    </script>
+</body>
+</html>

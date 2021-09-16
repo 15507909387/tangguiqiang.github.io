@@ -1,0 +1,5 @@
+/* pages/home/home.wxss */
+page .van-nav-bar {
+    background-color: #b83320;
+}
+

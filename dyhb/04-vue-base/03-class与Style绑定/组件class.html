@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <style>
+        .completed {
+            text-decoration: line-through;
+           
+            color: limegreen;
+        }
+    </style>
+
+    <div id="app">
+        <ul>
+            <list-item v-for="todo in todos" :todo="todo" :class="{completed: todo.completed}"></list-item>
+
+        </ul>
+    </div>
+
+    <script>
+        // 组件
+        Vue.component("list-item", {
+            props: ["todo"],
+            template: "<li>{{todo.text}}</li>",
+        });
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                bool: true,
+                hasError: false,
+                todos: [
+                    {
+                        text: "html css",
+                        completed: true,
+                    },
+                    {
+                        text: "javascript",
+                        completed: true,
+                    },
+                    {
+                        text: "学习vue",
+                        completed: false,
+                    },
+                ]
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 声明式渲染  -->
+        <h1 v-bind:title="text">vue.js</h1>
+        <h3>数据是：{{msg}}</h3>
+
+        <!-- 条件 -->
+        <p v-if="show">条件为真时显示</p>
+
+        <!-- 循环 -->
+        <ul>
+            <li v-for="(f,index) in friends">{{f}}-{{index}}</li>
+        </ul>
+        <ul>
+            <li v-for="todo in todos">{{todo.text}}</li>
+        </ul>
+
+        <h5>{{message}}</h5>
+        <button v-on:click="clickHandler">点击切换显隐</button>
+        <button v-on:click="reverseMessage">点击反转</button>
+    </div>
+
+    <!-- 这里不是html 是一个模板用来生成html -->
+
+    <script>
+        console.log(Vue);
+
+        var app = new Vue({
+            // 接管哪个根元素
+            el:"#app",
+            // 数据（状态）
+            data: {
+                //声明式渲染
+                msg:"hello wrold",
+                text:"一切反动派都是纸老虎",
+                show:true,
+                friends:["小红","小花","小翠"],
+                todos:[{text:"学习 JavaScript"},{text:"学习 Vue"},{text:"整个牛项目"}],
+                message: "一切反动派都是纸老虎",
+            },
+            // 方法
+            methods: {
+                clickHandler: function () {
+                    console.log(this,this.msg,this.show)
+                    //方法内部 this指向的是 这个vue实例对象 ==> app
+                    this.show = !this.show
+                },
+                reverseMessage() {
+                    this.message = this.message.split("").reverse().join("");
+                },
+            },
+        
+        });
+
+        // 现在数据和 DOM 已经被建立了关联，所有东西都是响应式的。
+
+        // app.msg = 'hello Vue'
+
+        setInterval (() => {
+            app.msg = new Date().toLocaleTimeString();
+        },1000);
+        // vue 状态变化是 dom只会做有必要的更新
+
+        
+     </script>
+    
+     
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.js"></script>
+    <style>
+        .test-count {
+            background-color: rgb(165, 165, 165)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>count is {{count}}</p>
+        <button @click="increment">++</button>
+        <button @click="incrementN(2)">+2</button>
+        <button @click="incrementN(3)">+3</button>
+        <button @click="incrementN(5)">+5</button>
+    </div>
+
+    <script>
+        // console.log(Vue, "-------------------", Vuex)
+
+        // mapState辅助函数
+        const store = new Vuex.Store({
+            state: {
+                count: 15,
+                mode: "dark",
+                msg: "hello world",
+                todos: [
+                    {
+                        id: 1,
+                        text: "111",
+                        completed: true,
+                    },
+                    {
+                        id: 3,
+                        text: "222",
+                        completed: false,
+                    },
+                    {
+                        id: 5,
+                        text: "333111",
+                        completed: true,
+                    }
+                ]
+            },
+            getters: {
+                count3: function (state) {
+                    return state.count * 3;
+                },
+                //.filter() 过滤器
+                doneTodos: (state) => state.todos.filter(item => item.completed),
+                doneTodosCount: (state, getters) => getters.doneTodos.length,
+
+                //可以通过让 getter 返回一个函数，来实现给 getter 传参
+                // gitTodoById: function (state) {
+                //find() 方法为数组中的每个元素都调用一次函数执行：
+                // return function (id) {
+                //   return state.todos.find(function (item) {
+                //         return item.id === id;
+                //     })
+                // }
+
+                gitTodoById: (state) => (id) => state.todos.find((n) => n.id === id)
+
+            },
+            //相当于methods
+            //mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。
+            //这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数：
+            mutations: {
+                increment(state) {
+                    state.count++
+                },
+                decrement(state) {
+                    state.count--
+                },
+                incrementN(state, n) {
+                    state.count += n;
+                },
+            }
+        })
+
+        // Getter 会暴露为 store.getters 对象，
+        // 你可以以属性的形式访问这些值：
+        console.log(store.getters.count3);
+        console.log(store.getters.gitTodoById(5));
+
+        const { mapState, mapGetters, mapMutations } = Vuex;
+        const app = new Vue({
+            el: "#app",
+            store,
+            //计算属性
+            computed: {
+                ...mapState(["count","msg","todos"]),
+                ...mapGetters(["doneTodos"]),
+               
+               },
+            //方法
+            methods: {
+                // increment: function () {
+                //     //不能直接修改store.state 的状态
+                //     //唯一的方法就是commit
+                //     this.$store.commit("increment")
+                // },
+                // incrementN: function (n) {                
+                //     this.$store.commit("incrementN",n)
+                // }
+                ...mapMutations(["increment","incrementN"])
+
+            } 
+
+
+        }
+        )
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.box .box-logo {
+  width: 100%;
+  margin-top: 40px;
+  text-align: center;
+}
+.box .box-logo img {
+  width: 300px;
+}
+.box .presentation {
+  padding-top: 40px;
+  width: 600px;
+  height: 230px;
+  margin: auto;
+}
+.box .presentation img {
+  width: 150px;
+  float: left;
+}
+.box .production {
+  width: 100%;
+}
+.box .production ul {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.box .production ul li {
+  width: 280px;
+  margin: 20px 0px;
+}
+.box .production ul img {
+  width: 100%;
+}

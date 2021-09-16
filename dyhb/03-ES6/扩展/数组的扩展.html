@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p></p>
+    <script>
+
+        //1.扩展运算符
+        console.log(...[1, 2, 3])
+        // 1 2 3
+
+        console.log(1, ...[2, 3, 4], 5)
+        // 1 2 3 4 5
+
+        console.log([...document.querySelectorAll('div')]);
+
+        function push(array, ...items) {
+            array.push(...items);
+        }
+
+        function add(x, y) {
+            return x + y;
+        }
+
+        const numbers = [4, 38];
+        add(...numbers) // 42
+        console.log(add(...numbers));
+
+        // 一层深拷贝 复制数组
+        const arr01 = ["a", "b"];
+        const arr02 = ["c"];
+        const arr03 = ["d", "e"];
+
+        console.log([...arr01, ...arr02, ...arr03]);
+        console.log([...document.querySelectorAll("div")]);
+
+        // 替代函数的apply方法
+        // ES5 的写法
+        function f(x, y, z) {
+            // ...
+        }
+        var args = [0, 1, 2];
+        var argss = f.apply(null, args);
+
+        // ES6的写法
+        function f(x, y, z) {
+            // ...
+        }
+        let arga = [0, 1, 2];
+        f(...arga);
+
+        // ES5的 写法
+        var arr1 = [0, 1, 2];
+        var arr2 = [3, 4, 5];
+        //适用 prototype 属性给对象添加属性
+        Array.prototype.push.apply(arr1, arr2);
+        console.log( Array.prototype.push.apply(arr1, arr2));
+
+        // ES6 的写法
+        let arr3 = [0, 1, 2];
+        let arr4 = [3, 4, 5];
+        arr3.push(...arr4);
+        console.log(arr3.push(...arr4));
+          
+
+        function xxx() {
+        console.log(...arguments);
+      }
+      xxx(1, 2, 3, 4, 5);
+
+    </script>
+
+    <script>
+
+// find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。
+// find() 方法为数组中的每个元素都调用一次函数执行：
+// 当数组中的元素在测试条件时返回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。
+        let nums = [1, 4, -5, 10];
+
+        let x = nums.find((item) => item ===8);
+        let y = nums.findIndex((item) => item === 10);
+        //includes() 方法用于判断字符串是否包含指定的子字符串。
+        let y1 = nums.includes(10);
+        // 找到返回下标可能时0 找不到返回-1
+
+        nums.forEach(function(item,index, arr) {
+            if (index == 2) {
+                return;
+            }
+
+            console.log(item, index, arr);
+        })
+    </script>
+
+</body>
+
+</html>

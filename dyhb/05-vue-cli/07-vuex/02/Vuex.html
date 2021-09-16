@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.js"></script>
+    <style>
+        .test-count {
+            background-color: rgb(165, 165, 165)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>count is {{count}}</p>
+        <button @click="increment">++</button>
+        <button @click="incrementN(2)">+2</button>
+        <button @click="incrementN(3)">+3</button>
+        <button @click="incrementN(5)">+5</button>
+    </div>
+
+    <script>
+        // console.log(Vue, "-------------------", Vuex)
+
+        // mapState辅助函数
+        const store = new Vuex.Store({
+            state: {
+                count: 15,
+                mode: "dark",
+                msg: "hello world",
+                loading: false,
+
+            },
+           
+            //相当于methods
+            //mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。
+            //这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数：
+            //Mutation 必须是同步函数
+            mutations: {
+                // increment(state) {
+                //     setTimeout(() => {
+                //         state.count++
+                //     }, 3000)
+                // },
+                increment(state) {
+                    state.count++
+                },
+                decrement(state) {
+                    state.count--
+                },
+                incrementN(state, n) {
+                    state.count += n;
+                },
+                toggleLoading(state, bool) {
+                    state.loading = bool;
+                },
+            },
+            //Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，
+            //因此你可以调用 context.commit 提交一个 mutation
+            //Action 通过 store.dispatch 方法触发：
+            actions: {
+                //相当于ajax获取数据
+                increment({ commit }) {
+                    // setTimeout(() => {
+                    //     commit('increment')
+                    // }, 3000)
+                    commit("toggleLoading", true),
+                    setTimeout(() => {
+                        commit('increment')
+                        commit("toggleLoading", false)
+                    }, 3000)
+                }
+            }
+        })
+
+ 
+
+        const { mapState, mapGetters, mapMutations } = Vuex;
+        const app = new Vue({
+            el: "#app",
+            store,
+            //计算属性
+            computed: {
+                ...mapState(["count", "msg",]),
+               
+
+            },
+            //方法
+            methods: {
+                // increment: function () {
+                //     //不能直接修改store.state 的状态
+                //     //唯一的方法就是commit
+                //     this.$store.commit("increment")
+                // },
+                // incrementN: function (n) {                
+                //     this.$store.commit("incrementN",n)
+                // }
+                ...mapMutations(["increment", "incrementN"])
+
+            }
+
+
+        }
+        )
+    </script>
+</body>
+
+</html>

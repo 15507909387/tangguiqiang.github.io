@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.6.2/dist/vuex.js"></script>
+    <style>
+        .test-count {
+            background-color: rgb(165, 165, 165)
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <p>count is {{$store.state.count}}</p>
+        <button @click="clickHandler">++</button>
+
+
+        <hr>
+        <test-count></test-count>
+        <hr>
+        <test-count></test-count>
+
+    </div>
+
+    <script>
+        // console.log(Vue, "-------------------", Vuex)
+
+        // mapState辅助函数
+        const { mapState } = Vuex;
+        const store = new Vuex.Store({
+            state: {
+                count: 0,
+                mode: "dark",
+                msg: "hello world"
+            },
+            //相当于methods
+            mutations: {
+                increment(state) {
+                    state.count++
+                },
+                decrement(state) {
+                    state.count--
+                }
+            }
+
+        })
+        // 通过 store.state 来获取状态对象，
+        // 以及通过 store.commit 方法触发状态变更：
+        console.log(store.state.count)
+        store.commit('increment')
+
+        Vue.component('test-count', {
+            template: `
+            <div class="test-count">
+            <p>{{sum}}</p>
+            <p>{{msgs}}</P>
+            <p>"mode"</P>
+            <p>父组件所使用的count是 {{count}}</p>
+            <button @click="click">子组件按钮--</button>  
+           
+            </div>
+            `,
+
+            data: function () {
+                return {
+                    n: 15,
+                }
+
+            },
+            methods: {
+                click: function () {
+                    this.$store.commit("decrement")
+                }
+            },
+            // computed: {
+            //     count:function(){
+            //         return this.$store.state.count;
+            //     },
+            //     mode:function(){
+            //         return this.$store.state.mode;
+            //     },
+            //     msg:function(){
+            //         return this.$store.state.msg;
+            //     }
+            // }
+            // computed: mapState({
+            //     //mapState 是一个函数 返回一个对象  这个对象就是计算属性的值
+            //     // 参数state 相当于 this.$store 不需要自己写
+            //     count: (state) => state.count,
+            //     msgs: (state) => state.msg,
+            //     mode: (state) => state.mode,
+
+            //     // 为了能够使用 `this` 获取局部状态，必须使用常规函数
+            //     sum(state) {
+            //         return state.count + this.n
+            //     }
+            // })
+
+            //当映射的计算属性的名称与 state 的子节点名称相同时，
+            // 我们也可以给 mapState 传一个字符串数组。
+            computed: {
+                
+                ...mapState(['count', 'mode', 'sum']),
+                // ...mapState({ msgs: (state) => state.msg }),
+                msgs() {
+                    return this.$store.state.msg;
+                },
+
+                n3() {
+                    return this.n * 3;
+                },
+            },
+            // 使用了 mapState 获取的store 调试工具里
+            //面是在 vuex bindings下
+            
+        });
+
+        const app = new Vue({
+            el: "#app",
+            store,
+            methods: {
+                clickHandler: function () {
+                    //不能直接修改store.state 的状态
+                    //唯一的方法就是commit
+                    this.$store.commit("increment")
+                }
+            }
+        }
+        )
+    </script>
+</body>
+
+</html>

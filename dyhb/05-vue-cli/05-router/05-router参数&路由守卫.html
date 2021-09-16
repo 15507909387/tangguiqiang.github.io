@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <style>
+
+        .router-link-exact-active {
+            color:red
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/">Go to Home</router-link>
+        <router-link to="/about">Go to about</router-link>
+        <router-link to="/user">Go to user</router-link>
+        <hr />
+        <router-link to="/user/nick">Go to nick</router-link>
+        <router-link to="/user/mark">Go to mark</router-link>
+        <router-link to="/user/nicholas">Go to nicholas</router-link>
+        <hr />
+
+        <router-view></router-view>
+        <!-- 一个“路径参数”使用冒号 : 标记。当匹配到一个路由时，
+        参数值会被设置到 this.$route.params，可以在每个组件内使用 -->
+
+    </div>
+
+    <script>
+        var Home = {
+            template: "<div>Home page</div>",
+        };
+        var About = {
+            template: "<div>About page</div>",
+        };
+        var UserList = {
+            template: "<div>UserList page</div>",
+        };
+        var User = {
+            template: "<div>User page  {{$route.params}}</div>",
+            //生命钩子 created 实例被创建之后执行代码
+            created: function () {
+                console.log("User created", this.$route.params.id)
+            },
+            //销毁生命周期
+            destroyed: function () {
+                console.log("User destroyed");
+            },
+            //监听生命钩子的变化
+            // watch: {
+            //     $route:function(to,from){
+            //         console.log(to.parame.id);
+            //     }
+            // },
+
+            //beforeRouteUpdate 生命钩子 表示在路由更新之前
+            // beforeRouteUpdate 拦截路由
+            //to 表示将要去到的路径 from 表示老的路径 next 中间键
+            // next调用next函数 执行下一步
+            beforeRouteUpdate: function (to, from, next) {
+                // console.log("这是to",to, "这是from",from);
+                console.log(to.params.id);
+                //mext()表示继续走
+                mext();
+            },
+
+
+        };
+
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: "/",
+                    component: Home,
+                },
+                {
+                    path: "/about",
+                    component: About,
+                },
+                {
+                    path: "/user",
+                    component: UserList,
+                },
+                {
+                    path: "/user/:id",
+                    component: User,
+                },
+                {
+                    path: "/*",
+                    component:{
+                       template: "<div>404</div>"
+                    },
+                },
+
+            ],
+        });
+
+        var app = new Vue({
+            el: "#app",
+            router,
+        });
+    </script>
+</body>
+
+</html>

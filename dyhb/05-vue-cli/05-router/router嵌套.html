@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <style>
+        .router-link-exact-active {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/">Go to Home</router-link>
+        <router-link to="/about">Go to about</router-link>
+        <router-link to="/user">Go to user</router-link>
+        <hr />
+        <router-link to="/user/nick">Go to nick</router-link>
+        <router-link to="/user/mark">Go to mark</router-link>
+        <router-link to="/user/nicholas">Go to nicholas</router-link>
+        <hr />
+
+        <router-view></router-view>
+        <!-- 一个“路径参数”使用冒号 : 标记。当匹配到一个路由时，
+        参数值会被设置到 this.$route.params，可以在每个组件内使用 -->
+
+    </div>
+
+    <script>
+        var Home = {
+            template: "<div>Home page</div>",
+        };
+        var About = {
+            template: "<div>About page</div>",
+        };
+        var UserList = {
+            template: `
+            <div>
+                <h3>UserList page</h3> 
+                <router-view></router-view>
+            </div>
+            `,
+        };
+        var User = {
+            template: `
+               <div>
+                UserList page {{ $route.params }}
+               </div >
+            `,
+
+
+        };
+
+        var router = new VueRouter({
+            routes: [
+                {
+                    path: "/",
+                    component: Home,
+                },
+                {
+                    path: "/about",
+                    component: About,
+                },
+                {
+                    path: "/user",
+                    component: UserList,
+                    children: [
+                        {
+                            path: 'xxx', 
+                            component: {
+                                template: "<div>/user/xxx</div>"
+                            },
+                        },
+                        {
+                            path: 'yyy', 
+                            component: {
+                                template: "<div>/user/yyy</div>"
+                            },
+                        },
+                        {
+                            path: ':id', 
+                            component: User
+                        }
+                    ]
+
+
+                },
+                // {
+                //     path: "/user/:id",
+                //     component: User,
+                // },
+
+
+            ],
+        });
+
+        var app = new Vue({
+            el: "#app",
+            router,
+        });
+    </script>
+</body>
+
+</html>

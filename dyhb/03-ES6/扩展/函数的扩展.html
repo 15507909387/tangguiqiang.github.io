@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// function foo({x, y = 5}) {
+//   console.log(x, y);
+// }
+
+// foo({}) // undefined 5
+// foo({x: 1}) // 1 5
+// foo({x: 1, y: 2}) // 1 2
+// foo() // TypeError: Cannot read property 'x' of undefined
+
+// function foo({x, y = 5} = {}) {
+//   console.log(x, y);
+// }
+
+// foo() // undefined 5
+
+// function fetch(url, { body = '', method = 'GET', headers = {} }) {
+//   console.log(method);
+// }
+
+// // fetch('http://example.com', {})
+// // "GET"
+
+// // fetch('http://example.com')
+// // 报错
+
+// // 写法一
+// function m1({x = 0, y = 0} = {}) {
+//   return [x, y];
+// }
+
+// // 写法二
+// function m2({x, y} = { x: 0, y: 0 }) {
+//   return [x, y];
+// }
+// console.log(m1())
+
+// // 函数没有参数的情况
+// m1() // [0, 0]
+// m2() // [0, 0]
+
+// // x 和 y 都有值的情况
+// m1({x: 3, y: 8}) // [3, 8]
+// m2({x: 3, y: 8}) // [3, 8]
+
+// // x 有值，y 无值的情况
+// m1({x: 3}) // [3, 0]
+// m2({x: 3}) // [3, undefined]
+
+// // x 和 y 都无值的情况
+// m1({}) // [0, 0];
+// m2({}) // [undefined, undefined]
+
+// m1({z: 3}) // [0, 0]
+// m2({z: 3}) // [undefined, undefined]
+
+// var aaa = [1,2,3,4,5];
+// console.log(aaa);
+
+// var x = 1;
+
+// function f(x, y = x) {
+//   console.log(y);
+// }
+
+// f(2) // 2
+
+// let foo = 'outer';
+
+// function bar(func = () => foo) {
+//   let foo = 'inner';
+//   console.log(func());
+// }
+
+// bar(); // outer
+
+// var x = 1;
+// function foo(x, y = function() { x = 9; }) {
+//   x = 5;
+//    y();
+ 
+//   console.log(x);
+// }
+
+// foo() // 3
+// x // 1
+
+// // arguments变量的写法
+// function sortNumbers() {
+//   return Array.prototype.slice.call(arguments).sort();
+// }
+
+// // rest参数的写法
+// const sortNumbers = (...numbers) => numbers.sort();
+
+// // 重点 箭头函数
+
+// var f = () => 5;
+// // 等同于
+// var f = function () { return 5 };
+
+// var sum = (num1, num2) => num1 + num2;
+// // 等同于
+// var sum = function(num1, num2) {
+//   return num1 + num2;
+// };
+
+// 普通函数写法
+//map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
+// [1,2,3].map(function (x) {
+//   return x * x;
+// });
+
+// 箭头函数写法
+// [1,2,3].map(x => x * x);
+
+// 普通函数写法
+// sort() 方法用于对数组的元素进行排序
+
+var result = values.sort(function (a, b) {
+  return a - b;
+});
+
+console.log(result);
+
+// 箭头函数写法
+// var result = values.sort((a, b) => a - b);
+
+
+
+    </script>
+</body>
+</html>

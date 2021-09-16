@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <p>Message: {{msg}}</p>
+        <p v-text="msg">顶你个肺</p>
+
+        <!-- v-once 一次性插入-->
+        <p v-once>Once: {{msg}}</p>
+        <!-- v-html 输出真正的HTML -->
+        <p>{{htmlRaw}}</p>
+        <p v-html="htmlRaw"></p>
+        <p v-html="sHtmlRaw"></p>
+
+        <hr>
+
+        <!-- Attribute -->
+        <!-- 对于布尔 attribute (它们只要存在就意味着值为 true) -->
+        <div v-bind:id="dynamicId" v-bind:class="dynamicId">div hello</div>
+        <a v-bind:href="link">百度</a>
+
+        <button>btn</button>
+        <button v-bind:disabled="bool">btn</button>
+        <video src="" v-bind:controls="bool"></video>
+
+        <hr>
+       
+        <!-- 使用 JavaScript 表达式 -->
+        <p>{{msg + '牛逼'}}</p>
+        <p>{{bool?'xxx':'yyy'}}</p>
+        <p>{{msg.split('').reverse().join('')}}</p>
+        <p v-bind:id="'list' + msg">ddddddddd</p>
+
+        <!-- 模板表达式都被放在沙盒中，只能访问全局变量的一个白名单，
+            如 Math 和 Date -->
+        <p>{{Math.random()}}</p>
+
+        <hr>
+        <!-- 修饰符 -->
+        <a v-bind:href="link" v-on:click.prevent="linkClick">百度</a>
+        <!-- v-bind: == :    v-on: == @ -->
+        <a :href="link" @click.prevent="linkClick">百度</a>
+    </div>
+
+    <script>
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello world",
+                htmlRaw: 
+                '<span style="color: red"> 这是html </span> ',
+                sHtmlRaw:
+                '<span style="color: red" onclick="console.log(54646)">你点我啊</span>',
+                
+                dynamicId: "hello",
+                link: "http://www.baidu.com",
+                bool: true,
+            },
+            
+            methods: {
+                linkClick: function(){
+                    console.log("噔噔蹬蹬");
+                },
+            },
+        });
+
+        app.msg = "hello vue"
+
+    </script>
+</body>
+</html>

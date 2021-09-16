@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p></p>
+  <script>
+    function delay(ms, msg) {
+      let p = new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          var n = (Math.random() - 0.1).toFixed(2);
+          var t = Date.now();
+          //   假设 1是成功 -1 是失败
+          //   console.log(n);
+          if (n > 0) {
+            resolve(`${n}-${t}-${msg}`);
+          } else {
+            reject(`${n}-${t}-${msg}`);
+          }
+        }, ms);
+      });
+      return p;
+    }
+
+    delay(3000, "13").then(function (res) {
+      console.log(res);
+      delay(2000, res).then(function (res2) {
+        console.log(res2);
+      });
+    });
+
+     // async 修饰符代表 这个函数是一个异步函数
+  //  async function xxx() {
+  //  let a = await delay(3000, "13");
+   // await 外层必须有async
+   // 等待 后面接你跟的函数（一般异步函数）并且会返回一个 p
+   // 等待promise凝固 成功失败 result   resolve或者reject方
+   console.log("a", a);
+   // 凡是遇到 await就一定会等 异步已经完成
+
+  //  let b = await delay(2000, a);
+
+      //     return { a, b };
+      //   }
+      //   // 异步函数运行完成 x就凝固
+      //   let x = xxx();
+      //   x.then((res) => console.log(res));
+
+      async function xxx() {
+        let a = await delay(3000, "13");
+        let b = await delay(2000, a);
+        return { a, b };
+      }
+      xxx().then((res) => console.log(res));
+
+  </script>
+</body>
+
+</html>

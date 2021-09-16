@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app" :style="{ fontSize: postFontSize + 'em' }">
+        <!-- <blog-post title="My journey with Vue"></blog-post>
+        <blog-post title="Blogging with Vue"></blog-post>
+        <blog-post title="Why Vue is so fun"></blog-post>
+        <hr> -->
+        <blog-post 
+        v-for="post in posts" 
+        v-bind:key="post.id" 
+        :title="post.title"
+        :post="post"
+        :post-font-size="postFontSize"
+        v-on:enlarge-text="postFontSize += $event"
+        
+        ></blog-post>
+       
+    </div>
+    <script>
+        Vue.component("blog-post", {
+            props: ["title", "post","postFontSize"],
+            
+            template: `
+        <div>
+            <h3>{{ title }}</h3>
+            <button v-on:click='$emit("enlarge-text", 0.05)'>{{postFontSize}}</button>
+            <i>{{post.content}}</i>
+        </div>`,
+        })
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                posts: [
+                    { id: 1, title: "My journey with Vue", content: "my content 1" },
+                    { id: 2, title: "Blogging with Vue", content: "my content 2" },
+                    { id: 3, title: "Why Vue is so fun", content: "my content 3" },
+                ],
+                postFontSize: 1,
+            },
+        })
+    </script>
+
+</body>
+
+</html>

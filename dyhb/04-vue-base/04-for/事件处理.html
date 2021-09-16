@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <style>
+        .big {
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+        }
+
+        .big .box {
+            width: 200px;
+            height: 200px;
+            background-color: lightcoral;
+        }
+
+        .big .box .small {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="counter += 1">Add 1</button>
+        <p>The button above has been clicked {{counter}} times.</p>
+        <button @click="decrement">decrement</button>
+
+        <hr>
+        <button @click="say('Hi')">Hi</button>
+        <button @click="say('Hello', $event)">Hello</button>
+        
+
+        <hr>
+        <a href="http://www.baidu.com" @click ="say('Hi')">say('Hi')</a>
+
+        <div class="big" @click="bigClick">
+            big
+            <div class="box" @click.capture="boxClick">
+                box
+                <div class="small" @click.stop="samllClick">small</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                counter: 0,
+            },
+            methods: {
+                decrement: function (event) {
+                    // `event`是原生DOM事件
+                    // `this` 在方法里指向当前 Vue 实例
+                    console.log(this, event);
+                    this.counter -= 1;
+                },
+
+                say: function (msg, event) {
+                    console.log(this, msg, event);
+                },
+
+                bigClick: function () {
+                    console.log("big");
+                },
+
+                boxClick: function(){
+                    console.log("box");
+                },
+
+                samllClick: function () {
+                    console.log("small");
+                },
+            },
+        });
+
+    </script>
+</body>
+
+</html>

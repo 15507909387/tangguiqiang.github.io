@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="./brands.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
+    <style>
+        #app {
+            width: 300px;
+            margin: 50px auto;
+        }
+
+        .draggable-items i {
+            font-size: 3em;
+            margin: 5px;
+
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 300px;
+        }
+
+        ul li {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        ul li h3 {
+            width: 100px;
+            /* height: 100px;  */
+            /* background-color: burlywood; */
+
+        }
+
+        ul li .box {
+
+            width: 60px;
+            height: 60px;
+            background-color: rgb(165, 106, 106);
+            border: 2px dashed black;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fab fa-spotify "></div>
+    <div id="app">
+        <section>
+            {{correct.length}}/{{steps}}
+            <button v-if="correct.length===5" @click="restart"></button>
+
+        </section>
+        <section class="draggable-items">
+            <!-- 插入图标库图标 类名前加fab -->
+            <i v-for="b in currentBrands" :class="`fab fa-${b.iconName}`" :style="{color: b.color }" draggable="true"
+                @dragstart="dragstart(b.brndName, $event)"></i>
+        </section>
+        <ul>
+            <!-- 遍历 -->
+            <li v-for="b in currentBrands">
+                <h3>{{b.brandName}}</h3>
+                <div class="box" @dragover.prevent="dragover" @drop="drop(b.brandName, $event)">
+                    <i
+                      v-if="correct.includes(b.brandName)"
+                      :class="`fab fa-${b.iconName}`"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <p>setData DataTrnsfer</p>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                //数组brands 在brands.js里
+                brands: brands,
+                //建立一个空数组截取数组brands
+                currentBrands: [],
+                guessBrands: [],
+                correct: [],
+                steps: 0,
+
+
+
+            },
+            // 计算属性
+            created: function () {
+                this.currentBrands = this.getRandomBrands();
+
+            },
+
+            //方法
+            methods: {
+                shuffler: function (arr) {
+
+                    // 数组重新排序 
+                    //sort() 方法用于对数组的元素进行排序。
+                    return [...arr].sort((a, b) => Math.random() - 0.5)
+                },
+                getRandomBrands: function () {
+                    // console.log(this.brands);
+                    //截取 数组brands前5位
+                    return this.shuffler(this.brands).slice(0, 5);
+                },
+                //拖动
+                dragstart: function (brandName, event) {
+                    // //在进行拖放操作的时候，dataTransfer对象可以用来保存被拖动的数据
+                    //set是设置的意思，而get是获取的意思
+                    //data() 函数用于在指定的元素上存取数据，返回设置值
+
+                    event.dataTransfer.setData("text", buandName)
+                },
+                //放置
+                drop: function (brandName, event) {
+                    //放置次数
+                    this.steps += 1;
+                    var id = event.dataTransfer.getData("text");
+                    console.log(id, brandName);
+                    // this.appendChild(document.querySelector("#" + id));
+                    //判断拖动元素id是否与放置位置id相同
+                    if (id === brandName) {
+                        this.correct.push(brandName)
+                    }
+                },
+                //刷新
+                restart: function () {
+                    this.currentBrands = this.getTandomBrands();
+                    this.gurssBrands = this.shuffler(this.currentBrands);
+                    this.steps = 0;
+                    this.correct = [];
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

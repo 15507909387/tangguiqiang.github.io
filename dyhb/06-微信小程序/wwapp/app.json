@@ -1,0 +1,21 @@
+{
+    "pages": [
+      "pages/home/home",
+        "pages/index/index",
+        "pages/logs/logs"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#b83320",
+        "navigationBarTitleText": "Weixin",
+        "navigationBarTextStyle": "white",
+        "navigationStyle": "custom"
+    },
+    "sitemapLocation": "sitemap.json",
+    "usingComponents": {
+        "van-button": "@vant/weapp/button/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-nav-bar": "@vant/weapp/nav-bar/index",
+        "van-icon": "@vant/weapp/icon/index"      
+    }
+}

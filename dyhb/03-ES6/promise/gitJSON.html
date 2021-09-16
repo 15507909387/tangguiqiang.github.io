@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+
+        function getJSON(url) {
+            return new Promise(function (resolve, reject) {
+               var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status ===200) {
+                            resolve(xhr.response);
+                        } else {
+                            reject("失败" + xhr.status)
+                        }
+                    }
+                }
+
+                xhr.open("GET", url);
+                xhr.send();
+            });
+        }
+
+        getJSON("https://api.kele8.cn")
+        .then(function(res){
+            console.log("成功" + res);
+        })
+        .catch(function (err) {
+            console.log("失败" + err);
+        });
+
+    </script>
+</body>
+</html>

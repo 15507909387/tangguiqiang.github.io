@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p></p>
+    <script>
+        //random()方法可返回介于0（包含）~ 1（不包含）之间的一个随机数
+        // console.log(Math.random());
+
+
+    //     const promise = new Promise(function (resolve, reject) {
+    //         // ... some code
+    //         // 假设 >0 为成功 <0 为失败
+    //         var n = Math.random() - 0.5;
+    //         console.log(n)
+    //         if (n > 0) {
+    //             resolve("成功");
+    //             console.log("成功")
+    //         } else {
+    //             reject("失败");
+    //         }
+    //         console.log(promise);
+    //     });
+
+    //     function timeout(ms) {
+    //         return new Promise((resolve, reject) => {
+    //             setTimeout(resolve, ms, 'done');
+    //         });
+    //     }
+
+    //     timeout(100).then((value) => {
+    //         console.log(value);
+    //     });
+
+    // </script>
+
+    // <script>
+    //     function delay(ms) {
+    //         let p = new Promise(function (resolve, reject) {
+    //             setTimeout(() => {
+    //                 var n = Math.random() - 0.5;
+    //                 //   假设 1是成功 -1 是失败
+    //                 //   console.log(n);
+    //                 if (n > 0) {
+    //                     resolve(n);
+    //                 } else {
+    //                     reject(n);
+    //                 }
+    //             }, ms);
+    //         });
+    //         return p;
+    //     }
+
+    //     var d1 = delay(3000);
+    //     d1.then(function (res) {
+    //         alert(res);
+    //     }).catch(function (err) {
+    //         console.log(err);
+    //     });
+    // </script>
+
+    <script>
+
+        let promise = new Promise(function (resolve, reject) {
+            console.log('Promise');
+            resolve();
+        });
+
+        promise.then(function () {
+            console.log('resolved.');
+        });
+
+        console.log('Hi!');
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .main {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            /* overflow: hidden; */
+            top: 0;
+            left: 0;
+
+        }
+
+        .main img {
+            width: 100%;
+        }
+
+        .main .mask {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(255, 195, 237, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* pointer-events 属性是一个指针属性 */
+            pointer-events: none;
+
+        }
+
+        .right {
+            width: 400px;
+            height: 400px;
+            margin-left: 20px;
+            display: none;
+        }
+
+        #root {
+            display: flex;
+        }
+
+        ul.list {
+            display: flex;
+            width: 400px;
+            height: 400px;
+        }
+
+        ul.list li {
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        ul.list li:last-child {
+            margin-right: 0;
+        }
+
+        ul.list img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <section  class="left">
+            <section class="main" @mousemove="mousemove" @mouseleave="mouseleave">
+                <img :src="currentSrc" alt="">
+                <div class="mask" :style="{top: y + 'px',left: x + 'px' }"></div>
+            </section>
+            <ul class="list">
+                <li v-for="(item,index) in imgArr">
+                    <img @click="currentIndex = index"
+                        :src="`https://www.17sucai.com/preview/905244/2019-06-20/%E6%B7%98%E5%AE%9D%E4%B8%BB%E5%9B%BE/${item}`"
+                        alt="">
+                </li>
+            </ul>
+        </section>
+        <section :style="styleObject" class="right"></section>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#root",
+            data: {
+                currentIndex: 0,
+                rightdisplay: "",
+                imgArr: [
+                    "images/banner1.jpg",
+                    "images/banner2.jpg",
+                    "images/banner3.jpg",
+                    "images/banner4.jpg",
+                    "images/banner5.jpg",
+                ],
+                x: 0,
+                y: 0,
+            },
+
+            //计算属性
+            computed: {
+                currentSrc: function () {
+                    return `https://www.17sucai.com/preview/905244/2019-06-20/%E6%B7%98%E5%AE%9D%E4%B8%BB%E5%9B%BE/${this.imgArr[this.currentIndex]}`
+                },
+                styleObject: function () {
+                    return {
+                        backgroundImage: `url('${this.currentSrc}')`,
+                        backgroundPosition: `-${2 * this.x}px -${2 * this.y}px`,
+                        // display: `${this.rightdisplay}`,
+                        display: `${this.rightdisplay}`,
+                    };
+                },
+                
+            },
+
+            //方法
+            methods: {
+                mousemove: function (event) {
+                    // console.log(event.offsetX, event.offsetY);
+                    var x = event.offsetX - 100;
+                    var y = event.offsetY - 100;
+                    // console.log(x, y)
+                    if (x < 0) {
+                        x = 0
+                    }; if (x > 200) {
+                        x = 200
+                    }; if (y < 0) {
+                        y = 0
+                    }; if (y > 200) {
+                        y = 200
+                    }
+                    this.x = x;
+                    this.y = y;
+                    this.rightdisplay = 'block'
+                },
+                mouseleave: function () {
+                    this.rightdisplay = 'none'
+                },
+            },
+        });
+
+    </script>
+
+
+</body>
+
+</html>

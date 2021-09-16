@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <h3>hello wrold</h3>
+        <ul>
+            <todo-item v-for="(item, index) in friends"
+                   v-bind:xxx="item"
+                   v-bind:yyy="index"
+            ></todo-item>
+            <!-- 自定义标签 添加属性 -->
+        </ul>
+
+        <ol>
+            <list-item v-for="nnn in groceryList" v-bind:item="nnn"></list-item>
+                  
+        </ol>
+    </div>
+
+    <script>
+        //定义名为 todo-item的新组件
+        Vue.component("todo-item", {
+            props: ["xxx","yyy"],
+            template: "<li v-on:click='clickHandler'>{{xxx}}</li>",
+            methods: {
+                clickHandler: function () {
+                    console.log(323, this.xxx, this.yyy);
+                },
+            },
+        });
+        // js访问data 或者 props 需要this 模板不需要
+
+        Vue.component("list-item",{
+            props: ["item"],
+            template: "<li>{{item.text}}</li>",
+        });
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                friends: ["小红", "小花", "小翠"],
+                groceryList: [
+                    {id: 0, text: "蔬菜"},
+                    {id: 1, text: "奶酪"},
+                    {id: 2, text: "随便其他什么人吃的东西"},
+                    {id: 3, text: "xxx的xxx是xxx"},
+                ],
+            },
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <p style="color: red">内联样式</p>
+
+        <!-- 对象语法 -->
+
+        <p :style="{color: fontColor, 'font-size':fontSize + 'px'}">动态style</p>
+        <!-- 直接绑定到一个样式对象通常更好 -->
+        <p :style="styleObject">绑定到一个样式对象</p>
+
+        <!-- 数组语法 -->
+        <div :style="[xxxObject, styleObject]">xxxObject</div>
+    </div>
+    <script>
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                fontColor: "red",
+                fontSize: 24,
+
+                xxxObject: {
+                    top: 0,
+                   
+                },
+            },
+
+            computed: {
+                styleObject: function() {
+                    return {
+                        color: "red",
+                        fontSize: this.fontSize + "px",
+                        backgroundColor: "lightblue"
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

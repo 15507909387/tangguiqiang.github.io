@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <p>{{count}}</p>
+    <button @click="increment">++</button>
+
+    <hr />
+    <!-- <test-count></test-count> -->
+
+    <hr />
+    <!-- <test-count></test-count> -->
+  </div>
+  <script>
+
+    var app = new Vue({
+      el: "#app",
+      //state，驱动应用的数据源； 
+      data() {
+        return {
+          count: 0
+        }
+      },
+
+      // view，以声明方式将 state 映射到视图；     
+  //     template: `
+  //   <div>{{ count }}</div>
+  // `,
+
+  // actions，响应在 view 上的用户输入导致的状态变化。    
+      methods: {
+        increment() {
+          this.count++
+        }
+      }
+    })
+    //把app挂载
+    // app.$mount(document.querySelector("#app"))
+  </script>
+
+</body>
+
+</html>
