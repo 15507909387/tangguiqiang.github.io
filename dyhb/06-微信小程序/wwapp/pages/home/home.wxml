@@ -26,9 +26,12 @@
           >
   </view>
 </van-nav-bar>
-<swiper autoplay="{{true}}">
+<swiper autoplay="{{true}}" indicator-dots="{{true}}">
     <swiper-item wx:for="{{banners[gender]}}" wx:key="index">
     <image style="width:750rpx" mode="widthFix"  src="{{item.url}}"></image>
 </swiper-item>
 </swiper>
+<block wx:if="recommend[gender].length">
+<recommend-section wx:for="{{recommend[gender]}}" wx:key="index" item="{{item}}"></recommend-section>
+</block>
 

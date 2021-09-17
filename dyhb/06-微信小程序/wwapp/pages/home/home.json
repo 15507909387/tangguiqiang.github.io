@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "recommend-section":"/components/recommend-section/recommend-section"
+ 
+  }
 }
