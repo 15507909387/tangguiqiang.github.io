@@ -1,0 +1,162 @@
+.detail {
+     margin: 0 30rpx 0 30rpx;
+
+     .detail-top {
+          display: flex;
+          padding-bottom: 10rpx;
+          margin: 22rpx 0 22rpx 0;
+          border-bottom: 1px solid #ebebeb;
+
+          .right {
+               margin: 0 10rpx 15rpx 30rpx;
+
+               .title {
+                    font-size: 32rpx;
+                    color: #000;
+               }
+
+               .right-center {
+                    font-size: 24rpx;
+                    color: #999;
+                    margin: 12rpx 0 12rpx 0;
+
+                    text {
+                         margin: 0 12rpx 0 12rpx;
+                         ;
+                    }
+
+                    text.arthor {
+                         color: #b93321;
+                         margin: 0 12rpx 0 0;
+                    }
+               }
+
+               .updated {
+                    color: #999;
+                    font-size: 24rpx;
+               }
+          }
+     }
+
+     .betail-click {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 40rpx;
+          border-bottom: 1rpx solid #ebebeb;
+
+          .bookrack {
+               display: inline-block;
+               vertical-align: middle;
+               height: 90rpx;
+               line-height: 90rpx;
+               border: 1px solid #b93321;
+               border-radius: 8px;
+               text-align: center;
+               color: #b93321;
+               font-size: 16px;
+               width: 45%
+          }
+
+          .read {
+               display: inline-block;
+               vertical-align: middle;
+               height: 90rpx;
+               line-height: 90rpx;
+               background-color: #b93321;
+               border: 1px solid #b93321;
+               border-radius: 8rpx;
+               text-align: center;
+               color: #fff;
+               font-size: 16px;
+               width: 45%;
+          }
+     }
+
+     .information {
+          margin: 40rpx;
+          padding-bottom: 40rpx;
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+          border-bottom: 1px solid #ebebeb;
+
+          view {
+
+               text {
+                    color: #999;
+                    font-size: 24rpx;
+               }
+          }
+     }
+
+     .longIntro {
+          font-size: 26rpx;
+          word-break: break-all;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          -webkit-transition: all .4s ease;
+      
+     }
+
+     .lastChapter {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid #ebebeb;
+          border-top: 1px solid #ebebeb;
+          margin-top: 30rpx;
+          padding-bottom: 30rpx;
+          padding-top: 30rpx;
+          .detail-lastChapter {
+               color: #999;
+               font-size: 24rpx;
+          }
+     }
+     .detail-comment {
+          margin-top: 30rpx;
+          view {
+               margin: 20rpx 0 20rpx 0;
+          }
+          .comment {
+               display: flex;
+               padding-top: 20rpx;
+               padding-bottom: 20rpx;
+               border-bottom: 1px solid #ebebeb;
+               .comment_right {
+                    flex: 1;
+                    margin-left: 20rpx; 
+                    .title {
+                         font-size: 24rpx;
+                         color: #000;
+                    }
+                    .content {
+                         font-size: 24rpx;
+                         color: #999;
+                         word-break: break-all;
+                         text-overflow: ellipsis;
+                         overflow: hidden;
+                         display: -webkit-box;
+                         -webkit-line-clamp: 3;
+                         -webkit-box-orient: vertical;
+                         // -webkit-transition: all .4s ease;
+                    }
+                    .comment_bottom {
+                         width: 100%;
+                         display: flex;
+                         justify-content: space-between;
+                    position: relative;
+                    font-size: 24rpx;
+                    color: #999;
+                         .likeCount {
+                             position: absolute;
+                             right: 0rpx;
+
+                         }
+                    }
+               }
+          }
+          
+     }
+}

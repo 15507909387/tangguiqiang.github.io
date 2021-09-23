@@ -11,7 +11,7 @@
   font-size: 32rpx;
 }
 .book .right .shortIntro {
-  margin: 16rpx 0 16rpx 0;
+  margin: 12rpx 0 12rpx 0;
   height: 76rpx;
   line-height: 38rpx;
   font-size: 28rpx;

@@ -1,1 +1,140 @@
-/* pages/detail/detail.wxss */
+.detail {
+  margin: 0 30rpx 0 30rpx;
+}
+.detail .detail-top {
+  display: flex;
+  padding-bottom: 10rpx;
+  margin: 22rpx 0 22rpx 0;
+  border-bottom: 1px solid #ebebeb;
+}
+.detail .detail-top .right {
+  margin: 0 10rpx 15rpx 30rpx;
+}
+.detail .detail-top .right .title {
+  font-size: 32rpx;
+  color: #000;
+}
+.detail .detail-top .right .right-center {
+  font-size: 24rpx;
+  color: #999;
+  margin: 12rpx 0 12rpx 0;
+}
+.detail .detail-top .right .right-center text {
+  margin: 0 12rpx 0 12rpx;
+}
+.detail .detail-top .right .right-center text.arthor {
+  color: #b93321;
+  margin: 0 12rpx 0 0;
+}
+.detail .detail-top .right .updated {
+  color: #999;
+  font-size: 24rpx;
+}
+.detail .betail-click {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40rpx;
+  border-bottom: 1rpx solid #ebebeb;
+}
+.detail .betail-click .bookrack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 90rpx;
+  line-height: 90rpx;
+  border: 1px solid #b93321;
+  border-radius: 8px;
+  text-align: center;
+  color: #b93321;
+  font-size: 16px;
+  width: 45%;
+}
+.detail .betail-click .read {
+  display: inline-block;
+  vertical-align: middle;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #b93321;
+  border: 1px solid #b93321;
+  border-radius: 8rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  width: 45%;
+}
+.detail .information {
+  margin: 40rpx;
+  padding-bottom: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  border-bottom: 1px solid #ebebeb;
+}
+.detail .information view text {
+  color: #999;
+  font-size: 24rpx;
+}
+.detail .longIntro {
+  font-size: 26rpx;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  -webkit-transition: all 0.4s ease;
+}
+.detail .lastChapter {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ebebeb;
+  border-top: 1px solid #ebebeb;
+  margin-top: 30rpx;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+}
+.detail .lastChapter .detail-lastChapter {
+  color: #999;
+  font-size: 24rpx;
+}
+.detail .detail-comment {
+  margin-top: 30rpx;
+}
+.detail .detail-comment view {
+  margin: 20rpx 0 20rpx 0;
+}
+.detail .detail-comment .comment {
+  display: flex;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #ebebeb;
+}
+.detail .detail-comment .comment .comment_right {
+  flex: 1;
+  margin-left: 20rpx;
+}
+.detail .detail-comment .comment .comment_right .title {
+  font-size: 24rpx;
+  color: #000;
+}
+.detail .detail-comment .comment .comment_right .content {
+  font-size: 24rpx;
+  color: #999;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.detail .detail-comment .comment .comment_right .comment_bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  font-size: 24rpx;
+  color: #999;
+}
+.detail .detail-comment .comment .comment_right .comment_bottom .likeCount {
+  position: absolute;
+  right: 0rpx;
+}

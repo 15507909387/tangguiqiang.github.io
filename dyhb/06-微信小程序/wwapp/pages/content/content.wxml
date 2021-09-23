@@ -1,0 +1,4 @@
+<!--pages/content/content.wxml-->
+<nav-bar>帝霸</nav-bar>
+<view>{{items.title}}xxx</view>
+

@@ -1,10 +1,8 @@
 // components/nav-bar/nav-bar.js
 Component({
     options: {
-        styleIsolation: 'shared'
+      styleIsolation: 'shared',
     },
-
-    
     /**
      * 组件的属性列表
      */
@@ -23,10 +21,10 @@ Component({
      * 组件的方法列表
      */
     methods: {
-          onClickLeft: function () {
-            wx.navigateBack({
-              delta: 0,
-            })
-          }
-    }
+        onClickLeft: function () {
+          wx.navigateBack({
+            delta: 0,
+          })
+        }
+      }
 })

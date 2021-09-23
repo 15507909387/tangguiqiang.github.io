@@ -1,0 +1,22 @@
+<!--pages/catalog/catalog.wxml-->
+<nav-bar>优质书源</nav-bar>
+<view class="catalog_wxml">
+    <view class="catalog_top">
+        <view class="left">
+            <text>目录</text>
+            <text>共{{section.length}}</text>
+        </view>
+        <view>
+            <text>倒序</text>
+        </view>
+    </view>
+  
+        <view  wx:for="{{section}}" wx:key="index"
+       data-order="{{item.order}}"
+        
+        bindtap="navsection" >
+            <!-- <text>{{index}}</text> -->
+            <text> {{item.title}}</text>
+     
+    </view>
+</view>

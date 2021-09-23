@@ -9,9 +9,10 @@
         "pages/me/me",
         "pages/cate/cate",
         "pages/rank/rank",
-        "pages/shelf/shelf"  
+        "pages/shelf/shelf",
+        "pages/catalog/catalog",
+        "pages/content/content"
     ],
-    
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#b83320",
@@ -19,32 +20,30 @@
         "navigationBarTextStyle": "white",
         "navigationStyle": "custom"
     },
-    
     "tabBar": {
         "list": [
-          {
-            "pagePath": "pages/home/home",
-            "text": "首页"
-          },
-          {
-            "pagePath": "pages/cate/cate",
-            "text": "分类"
-          },
-          {
-            "pagePath": "pages/shelf/shelf",
-            "text": "书架"
-          },
-          {
-            "pagePath": "pages/rank/rank",
-            "text": "排行"
-          },
-          {
-            "pagePath": "pages/me/me",
-            "text": "我的"
-          }
+            {
+                "pagePath": "pages/home/home",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/cate/cate",
+                "text": "分类"
+            },
+            {
+                "pagePath": "pages/shelf/shelf",
+                "text": "书架"
+            },
+            {
+                "pagePath": "pages/rank/rank",
+                "text": "排行"
+            },
+            {
+                "pagePath": "pages/me/me",
+                "text": "我的"
+            }
         ]
-      },
-
+    },
     "sitemapLocation": "sitemap.json",
     "usingComponents": {
         "van-button": "@vant/weapp/button/index",

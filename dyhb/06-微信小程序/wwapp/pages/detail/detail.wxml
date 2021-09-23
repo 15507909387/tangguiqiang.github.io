@@ -1,3 +1,75 @@
 <!--pages/detail/detail.wxml-->
 <nav-bar>书籍详情</nav-bar>
-<text>pages/detail/detail.wxml</text>
+
+<wxs src="../../utils/looks.wxs" module="looks"></wxs>
+
+<view class="detail">
+    <view class="detail-top">
+        <view class="left">
+            <image mode="aspectFill" style="width: 130rpx; height:175rpx;" src="{{looks.parseImageUrl(detail.cover)}}">
+            </image>
+        </view>
+        <view class="right">
+            <view class="title">{{detail.title}}</view>
+            <view class="right-center">
+                <text class="arthor">{{detail.author}}</text> |
+                <text class="cat">{{detail.cat}}</text> |
+                <text class="word">{{detail.wordCount}}</text>
+            </view>
+            <view class="updated">{{detail.updated}}</view>
+        </view>
+    </view>
+    <view class="betail-click">
+        <text class="bookrack">加入书架</text>
+        <text class="read"
+        bindtap="navtoread"
+        >开始阅读</text>
+    </view>
+    <view class="information">
+        <view class="popularity">
+            <text>追人气</text>
+            <view class="latelyFollower">{{detail.latelyFollower}}</view>
+        </view>
+        <view class="reader">
+            <text>读者留存率</text>
+            <view class="retentionRatio">{{detail.retentionRatio}}%</view>
+        </view>
+        <view>
+            <text>日更字数/天</text>
+            <view class="chaptersCount">{{detail.serializeWordCount}}</view>
+        </view>
+    </view>
+    <view class="longIntro">{{detail.longIntro}}</view>
+    <view class="lastChapter"
+    data-id="{{source}}"
+    bindtap="navtochapter"
+    >
+        <text>目录</text>
+        <text class="detail-lastChapter">{{detail.lastChapter}}</text>
+    </view>
+    <view class="detail-comment">
+        <view>热门书评</view>
+
+        <view class="comment" wx:for="{{comment}}" wx:key="index">
+            <view class=comment_left">
+                <image mode="aspectFill" style="width: 70rpx; height:70rpx; border-radius: 50%;"
+                    src="https://statics.zhuishushenqi.com{{comment[index].author.avatar}}"></image>
+            </view>
+
+            <view class="comment_right">
+                <view>{{comment[index].author.nickname}}</view>
+                <view class="title">{{comment[index].title}}</view>
+                <view class="content">{{comment[index].content}}</view>
+                <view class="comment_bottom">
+                    <text>{{comment[index].author.lv}}小时前</text>
+                    <text class="likeCount">{{comment[index].likeCount}}人觉得有用</text>
+                </view>
+            </view>
+            <!-- <view>{{item.avatar}}xxx</view>
+            <view>{{item.avatar}}xxx</view>
+            <view>{{item.avatar}}xxx</view> -->
+
+
+        </view>
+    </view>
+</view>

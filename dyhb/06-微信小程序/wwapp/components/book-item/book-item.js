@@ -21,7 +21,7 @@ Component({
         navtodetail: function(event) {
             // console.log(event.currentTarget.dataset.id)
             wx.navigateTo({
-              url: '/pages/detail/detail?id' + event.currentTarget.dataset.id,
+              url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id,
             })
         }
     }

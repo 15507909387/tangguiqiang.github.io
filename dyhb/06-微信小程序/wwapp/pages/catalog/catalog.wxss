@@ -1,0 +1,7 @@
+.catalog_wxml {
+  margin: 40rpx;
+}
+.catalog_wxml .catalog_top {
+  display: flex;
+  justify-content: space-between;
+}
