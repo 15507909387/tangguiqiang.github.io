@@ -1,4 +1,5 @@
 <!--pages/detail/detail.wxml-->
+<wxs src="../../utils/looks.wxs" module="looks"></wxs>
 <nav-bar>书籍详情</nav-bar>
 
 <wxs src="../../utils/looks.wxs" module="looks"></wxs>
@@ -20,7 +21,14 @@
         </view>
     </view>
     <view class="betail-click">
-        <text class="bookrack">加入书架</text>
+        <text class="bookrack"
+        bindtap="addShelf"
+        wx:if="{{!isExit}}"
+        >加入书架</text>
+        <text class="bookyichu"
+        bindtap="removeShelf"
+        wx:else
+        >移出书架</text>
         <text class="read"
         bindtap="navtoread"
         >开始阅读</text>
@@ -28,7 +36,7 @@
     <view class="information">
         <view class="popularity">
             <text>追人气</text>
-            <view class="latelyFollower">{{detail.latelyFollower}}</view>
+            <view class="latelyFollower">{{ looks.parseCount(detail.latelyFollower)}}</view>
         </view>
         <view class="reader">
             <text>读者留存率</text>
@@ -42,6 +50,7 @@
     <view class="longIntro">{{detail.longIntro}}</view>
     <view class="lastChapter"
     data-id="{{source}}"
+    data-booksid="{{id}}"
     bindtap="navtochapter"
     >
         <text>目录</text>
@@ -57,7 +66,7 @@
             </view>
 
             <view class="comment_right">
-                <view>{{comment[index].author.nickname}}</view>
+                <view class="name">{{comment[index].author.nickname}}</view>
                 <view class="title">{{comment[index].title}}</view>
                 <view class="content">{{comment[index].content}}</view>
                 <view class="comment_bottom">

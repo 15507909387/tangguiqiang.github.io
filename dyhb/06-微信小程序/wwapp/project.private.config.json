@@ -13,9 +13,15 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "pages/detail/detail",
-                    "pathName": "pages/detail/detail",
+                    "name": "pages/cate/cate",
+                    "pathName": "pages/cate/cate",
                     "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/category/category",
+                    "pathName": "pages/category/category",
+                    "query": "major=玄幻&gender=male",
                     "scene": null
                 },
                 {
@@ -25,21 +31,45 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/detail/detail",
-                    "pathName": "pages/detail/detail",
-                    "query": "",
-                    "scene": null
-                },
-                {
                     "name": "pages/catalog/catalog",
                     "pathName": "pages/catalog/catalog",
-                    "query": "id=5aba3894ce88777b51df6ec4",
+                    "query": "id=573d4a909b87bbad57aefb87",
                     "scene": null
                 },
                 {
                     "name": "pages/cate/cate",
                     "pathName": "pages/cate/cate",
                     "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/rank/rank",
+                    "pathName": "pages/rank/rank",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/shelf/shelf",
+                    "pathName": "pages/shelf/shelf",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/search/search",
+                    "pathName": "pages/search/search",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/result/result",
+                    "pathName": "pages/result/result",
+                    "query": "keywords=不装了我就是大佬",
+                    "scene": null
+                },
+                {
+                    "name": "pages/content/content",
+                    "pathName": "pages/content/content",
+                    "query": "booksid=53e56ee335f79bb626a496c9&order=11",
                     "scene": null
                 }
             ]

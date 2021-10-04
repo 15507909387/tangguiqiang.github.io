@@ -12,14 +12,29 @@ Page({
      */
     data: {
         section: null,
-        id: null,
-        page: 0
+        booksid: null,
+        page: 0,
+        add: null,
+        tion: true
+    },
+
+    navdaoxu:function() {
+        this.setData({
+            tion: false,
+            section: this.data.section.reverse()
+        })
+    },
+    navadd: function() {
+        this.setData({
+            tion: true,
+            section: this.data.section.reverse()
+        })
     },
 
     navsection: function (event) {
         console.log(event);
         wx.navigateTo({
-            url: '/pages/content/content?id=' + event.currentTarget.dataset.id,
+            url: '/pages/content/content?booksid=' + this.data.booksid + '&order=' + event.currentTarget.dataset.order,
         })
         // var index = parseInt(event.currentTarget.dataset.index);
         // console.log('index' + index);
@@ -30,7 +45,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options);
+        // console.log(options);
+      this.setData({
+          booksid:options.booksid
+      })
         request({
             url: "http://novel.kele8.cn/book-chapters/" + options.id
         }).then(res => {
@@ -38,7 +56,7 @@ Page({
             cs = res.data.chapters,
                 this.setData({
                     // section: res.data.chapters
-
+                    add: cs,
                     section: cs.splice(0, 100),
                     id: options.id
 

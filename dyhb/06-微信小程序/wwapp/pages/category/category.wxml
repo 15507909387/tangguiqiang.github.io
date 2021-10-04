@@ -1,0 +1,38 @@
+<!--pages/category/category.wxml-->
+<wxs src="../../utils/looks.wxs" module="looks"></wxs>
+<nav-bar>{{sub}}</nav-bar>
+<view class="category">
+    <view class="top"><text wx:for="{{filters}}" wx:key="index"
+            class="{{item.text === categoryFilters.text ? 'active' : ''}}" bindtap="categoryFilters"
+            data-text="{{item.text}}" data-type="{{item.type}}">{{item.text}}</text>
+    </view>
+    <view class="center">
+        <text wx:for="{{subs.mins}}" wx:key="index" wx:for-item="sub" class="{{sub === categorySubs ? 'actives' : ''}}"
+            data-sub="{{sub}}" bindtap="categorySubs">{{sub}}</text>
+    </view>
+
+    <view class="bottom">
+        <view class="bottom-all"
+         wx:for="{{categoryText}}" wx:key="index"
+         data-id="{{item._id}}"
+         bindtap="navtodetail"
+        >
+            <view class="left">
+                <image mode="aspectFill" style="width: 130rpx; height:175rpx;"
+                    src="{{looks.parseImageUrl(item.cover)}}">
+                </image>
+            </view>
+            <view class="right">
+                <view class="title">{{item.title}}</view>
+                <view class="shortIntro">{{item.shortIntro}}</view>
+                <view class="minorCate">
+                   
+                    <text class="lately"><text>{{item.latelyFollower}}</text>人气</text> |
+                    <text class="lately"><text>{{item.retentionRatio}}</text>留存</text> 
+                </view>
+            </view>
+           
+        </view>
+    </view>
+    <view vw:if="hasMase">-----没有更多了-----</view>
+</view>

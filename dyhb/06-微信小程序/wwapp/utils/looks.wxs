@@ -1,4 +1,15 @@
 
+
+ var parseCount = function (value) {
+    // return value + "0";
+     if (value > 10000) {
+      return (value / 10000).toFixed(1) + "万";
+    } else {
+      return value;
+    }
+  }
+
+
   var slice = function (arr, start, end) {
     if (arr) {
       return arr.slice(start, end)
@@ -16,8 +27,24 @@
     }
   }
 
+  var fanyi = function(n) {
+    switch (n) {
+      case 'male':
+        return '男生'
+      case 'female':
+        return '女生'
+      case 'press':
+        return '出版'     
+      default:
+        return '漫画'
+      
+    }
+  }
+
   module.exports = {
     slice: slice,
-    parseImageUrl: parseImageUrl
+    parseImageUrl: parseImageUrl,
     // parseCon: parseCon
+    fanyi: fanyi,
+    parseCount:parseCount
   }

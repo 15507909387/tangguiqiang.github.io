@@ -4,16 +4,17 @@
     <view class="catalog_top">
         <view class="left">
             <text>目录</text>
-            <text>共{{section.length}}</text>
+            <text>共 {{add.length}} 章</text>
         </view>
         <view>
-            <text>倒序</text>
+            <text wx:if="{{tion}}" bindtap="navdaoxu">倒序</text>
+            <text wx:else bindtap="navadd">正序</text>
         </view>
     </view>
   
-        <view  wx:for="{{section}}" wx:key="index"
+        <view class="certen" wx:for="{{section}}" wx:key="index"
        data-order="{{item.order}}"
-        
+        data-booksid="{{booksid}}"
         bindtap="navsection" >
             <!-- <text>{{index}}</text> -->
             <text> {{item.title}}</text>

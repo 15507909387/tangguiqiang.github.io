@@ -1,2 +1,31 @@
 <!--pages/shelf/shelf.wxml-->
-<text>pages/shelf/shelf.wxml</text>
+<wxs src="../../utils/looks.wxs" module="looks"></wxs>
+<nav-barb>书架</nav-barb>
+
+<van-swipe-cell right-width="{{ 50 }}" wx:for="{{books}}" wx:key="index"
+bind:click="click"
+    data-id="{{item._id}}"
+>
+
+    <van-cell-group>
+        <view class="rating" data-id="{{item._id}}" bindtap="navtodetail">
+            <view class="left">
+                <image mode="aspectFill" style="width: 130rpx; height:175rpx;"
+                    src="{{looks.parseImageUrl(item.cover)}}">
+                </image>
+            </view>
+            <view class="right">
+                <view class="title">{{item.title}}</view>
+                <view class="shortIntro">{{item.longIntro}}</view>
+                <view class="minorCate">
+                    <text class="lately">{{item.author}}</text>
+                    <text>{{item.minorCate}}</text>
+
+                </view>
+            </view>
+
+        </view>
+    </van-cell-group>
+    <view class="shanchu" slot="right" 
+    >删除</view>
+</van-swipe-cell>

@@ -48,6 +48,19 @@
   font-size: 16px;
   width: 45%;
 }
+.detail .betail-click .bookyichu {
+  display: inline-block;
+  vertical-align: middle;
+  height: 90rpx;
+  line-height: 90rpx;
+  border: 1px solid #bebebe;
+  border-radius: 8px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+  width: 45%;
+  background-color: #999999;
+}
 .detail .betail-click .read {
   display: inline-block;
   vertical-align: middle;
@@ -111,6 +124,10 @@
 .detail .detail-comment .comment .comment_right {
   flex: 1;
   margin-left: 20rpx;
+}
+.detail .detail-comment .comment .comment_right .name {
+  font-size: 32rpx;
+  color: #3a6645;
 }
 .detail .detail-comment .comment .comment_right .title {
   font-size: 24rpx;

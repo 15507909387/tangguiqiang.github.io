@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "nav-barb":"../../components/nav-barb/nav-barb",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index"
+  }
 }

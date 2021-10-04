@@ -1,1 +1,58 @@
 /* pages/content/content.wxss */
+.content {
+  
+    font-size: 12px;
+    padding: 20rpx;
+  }
+  
+  .content view {
+    text-indent: 2em;
+    line-height: 1.8;
+    text-align: justify;
+  }
+
+  .config {
+    padding: 30rpx;
+  }
+
+  .van-popup .config .mulu {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0rpx 30rpx 0rpx ;
+}
+  
+  .themes {
+    display: flex;
+    justify-content: space-around;
+  }
+  .themes .themes_right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .themes .themes_right view {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    line-height: 120rpx;
+    text-align: center;
+  }
+  
+  .content.dark {
+    background-color: #F7EED4;
+    color: #333;
+  }
+  
+  .content.huyan {
+    background-color: #E1EEF2;
+    color: #333;
+  }
+  
+  .content.ba {
+    background-color: #161819;
+    color: #3E3F3F;
+  }
+
+  
+  

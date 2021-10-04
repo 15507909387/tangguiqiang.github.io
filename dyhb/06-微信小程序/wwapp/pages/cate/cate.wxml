@@ -1,3 +1,28 @@
 <!--pages/cate/cate.wxml-->
-<nav-bar>分类</nav-bar>
-<text>pages/cate/cate.wxml</text>
+<nav-barb>分类</nav-barb>
+
+<wxs src="../../utils/looks.wxs" module="looks"></wxs>
+
+<view class="categories" wx:for="{{categories}}" wx:for-index="key" wx:key="index">
+    <view class="categories-if" wx:if="{{ key !== 'ok' }}">
+        <view class="key">{{looks.fanyi(key)}}</view>
+        <van-grid column-num="3" class="category-list">
+            <van-grid-item class="item" use-slot="{{true}}" wx:for="{{item}}" wx:key="index" wx:for-item="cate"
+            bindtap="navcategory"
+            data-name="{{cate.name}}"
+            data-gender="{{key}}"
+            >
+                <view class="name">{{cate.name}}</view>
+                <view class="bookCount">{{cate.bookCount}}</view>
+            </van-grid-item>
+        </van-grid>
+        <!-- <view class="categories-item">
+            <view class="categories-cate" wx:for="{{item}}" wx:for-item="cate" wx:key="index">
+                <view class="item">
+                    <view class="name">{{cate.name}}</view>
+                    <view class="bookCount">{{cate.bookCount}}</view>
+                </view>
+            </view>
+        </view> -->
+    </view>
+</view>

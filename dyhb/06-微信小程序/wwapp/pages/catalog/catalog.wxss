@@ -1,7 +1,12 @@
 .catalog_wxml {
-  margin: 40rpx;
+  margin: 20rpx 40rpx 0 40rpx;
 }
 .catalog_wxml .catalog_top {
+  font-size: 36rpx;
   display: flex;
   justify-content: space-between;
+}
+.catalog_wxml .certen {
+  margin-top: 30rpx;
+  color: #a7a7a7;
 }

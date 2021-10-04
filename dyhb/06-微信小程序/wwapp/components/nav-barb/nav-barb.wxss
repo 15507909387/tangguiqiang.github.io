@@ -1,0 +1,13 @@
+/* components/nav-barb/nav-barb.wxss */
+.nav-bar .van-nav-bar {
+    background: #b83320;
+  }
+  .van-nav-bar__text {
+    color: white;
+  }
+  .van-icon-arrow-left::before {
+    color: white;
+  }
+  .title {
+    color: white;
+  }

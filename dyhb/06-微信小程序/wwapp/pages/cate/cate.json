@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "nav-bar":"../../components/nav-bar/nav-bar"
+    "nav-barb":"../../components/nav-barb/nav-barb"
 
   }
 }

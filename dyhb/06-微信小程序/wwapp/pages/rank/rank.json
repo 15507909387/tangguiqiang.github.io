@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "nav-barb":"../../components/nav-barb/nav-barb"
+  }
 }

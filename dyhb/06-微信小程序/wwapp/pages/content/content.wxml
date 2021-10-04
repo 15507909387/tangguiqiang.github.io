@@ -1,4 +1,29 @@
 <!--pages/content/content.wxml-->
-<nav-bar>帝霸</nav-bar>
-<view>{{items.title}}xxx</view>
+<wxs src="../../utils/looks.wxs" module="looks" />
 
+<nav-bar>{{title}}</nav-bar>
+<view class="content {{config.theme}}" bindtap="showPopup" style="font-size: {{config.size}}px;">
+    <view wx:for="{{section}}" wx:key="index">{{item}}</view>
+</view>
+
+<van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 20%;">
+    <view class="config">
+        <!-- style="background-color: {{themess[index].bg}}" -->
+        <view class="mulu">
+            <text bindtap="navTop">上一章</text>
+            <text>目录</text>
+            <text bindtap="navBottom">下一章</text>
+        </view>    
+        <view>
+          <van-slider value="16" bind:change="onChange" min="10" max="24" step="1" />
+        </view>
+ 
+        <view class="themes" style="margin: 30rpx 0 0 0;">
+        <text style="line-height: 120rpx; height: 120rpx;">主题：</text>
+        <view class="themes_right">
+            <view data-theme="{{item.text}}" bindtap="changeTheme" class="{{item.text}}" wx:for="{{themes}}"
+                wx:key="index" style="background-color: {{item.bg}}">{{item.name}}</view>
+        </view>
+    </view>
+    </view>
+</van-popup>

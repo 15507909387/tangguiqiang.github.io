@@ -5,14 +5,35 @@ Page({
      * 页面的初始数据
      */
     data: {
+        categories: null
+    },
 
+    navcategory: function(e) {
+        console.log(e.currentTarget);
+        wx.navigateTo({
+          url: '../../pages/category/category?major=' + e.currentTarget.dataset.name + '&gender=' + e.currentTarget.dataset.gender
+
+        })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        wx.showLoading({
+            title: '加载中',
+          })
+        wx.request({
+            url: 'http://novel.kele8.cn/categories',
+            success:(res)=> {
+                this.setData({
+                    categories: res.data
+                })
+            }
+        })
+        setTimeout(function () {
+            wx.hideLoading()
+          }, 2000)
     },
 
     /**

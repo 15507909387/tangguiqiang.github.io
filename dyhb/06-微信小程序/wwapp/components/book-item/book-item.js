@@ -18,6 +18,8 @@ Component({
      * 组件的方法列表
      */
     methods: {
+        
+
         navtodetail: function(event) {
             // console.log(event.currentTarget.dataset.id)
             wx.navigateTo({

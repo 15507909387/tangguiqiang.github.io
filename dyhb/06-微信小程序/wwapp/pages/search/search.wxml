@@ -1,0 +1,23 @@
+<!--pages/search/search.wxml-->
+<nav-bar>搜索</nav-bar>
+<van-search value="{{ value }}" shape="round" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange"
+  bind:search="onSearch">
+  <view slot="action" bind:tap="onClick" data-keywords="{{value}}" style="font-size: 28rpx; color: #6b6b6b; margin: 0 20rpx 0 20rpx;" >确定</view>
+</van-search>
+<view class="center" wx:if="{{judge}}">
+  <view class="hotSearch">热门搜索</view>
+  <view  class="hotBooks" >
+    <view class="item"
+    bindtap="navValue" data-item="{{item}}"
+    wx:for="{{hotBooks.hotWords}}" wx:key="index"
+    >{{item}}</view>
+  </view>
+  <view class="history">
+    <view class="lisi">搜索历史</view>
+  </view>
+</view>
+<view class="complement">
+  <view class="jieguo" bindtap="navkeywords" data-keywords="{{item}}" wx:for="{{complete.keywords}}" wx:key="index">
+    {{item}}
+  </view>
+</view>

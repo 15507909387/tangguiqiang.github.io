@@ -1,0 +1,6 @@
+<!--pages/result/result.wxml-->
+<nav-bar>搜索"{{keyword}}"</nav-bar>
+<view class="list">
+<book-item  wx:for="{{books}}" wx:key="index" wx:for-item="book" book="{{book}}"></book-item>
+</view>
+

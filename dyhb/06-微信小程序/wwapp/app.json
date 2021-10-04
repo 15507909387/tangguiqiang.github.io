@@ -11,7 +11,10 @@
         "pages/rank/rank",
         "pages/shelf/shelf",
         "pages/catalog/catalog",
-        "pages/content/content"
+        "pages/content/content",
+        "pages/category/category",
+        "pages/search/search",
+        "pages/result/result"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -21,26 +24,39 @@
         "navigationStyle": "custom"
     },
     "tabBar": {
+        "color": "#2C2C2C",
+        "selectedColor": "#D81E06",
         "list": [
             {
-                "pagePath": "pages/home/home",
-                "text": "首页"
-            },
-            {
                 "pagePath": "pages/cate/cate",
-                "text": "分类"
-            },
-            {
-                "pagePath": "pages/shelf/shelf",
-                "text": "书架"
+                "text": "分类",
+                "iconPath": "./image/fenlei.png",
+                "selectedIconPath": "./image/fenlei (1).png"
             },
             {
                 "pagePath": "pages/rank/rank",
-                "text": "排行"
+                "text": "排行",
+                "iconPath": "./image/paihan.png",
+                "selectedIconPath": "./image/paihan (1).png"
             },
+            
+            {
+                "pagePath": "pages/home/home",
+                "text": "首页",
+                "iconPath": "./image/shouye.png",
+                "selectedIconPath": "./image/shouye (1).png"
+           },
+           {
+            "pagePath": "pages/shelf/shelf",
+            "text": "书架",
+            "iconPath": "./image/shujia.png",
+            "selectedIconPath": "./image/shujia (1).png"
+        },
             {
                 "pagePath": "pages/me/me",
-                "text": "我的"
+                "text": "我的",
+                "iconPath": "./image/im.png",
+                "selectedIconPath": "./image/im (1).png"
             }
         ]
     },
@@ -49,6 +65,12 @@
         "van-button": "@vant/weapp/button/index",
         "van-popup": "@vant/weapp/popup/index",
         "van-nav-bar": "@vant/weapp/nav-bar/index",
-        "van-icon": "@vant/weapp/icon/index"
+        "van-nav-barb": "@vant/weapp/nav-bar/index",
+        "van-icon": "@vant/weapp/icon/index",
+        "van-grid-item": "@vant/weapp/grid-item/index",
+        "van-grid": "@vant/weapp/grid/index",
+        "van-search": "@vant/weapp/search/index",
+        "van-slider": "@vant/weapp/slider/index"
+       
     }
 }

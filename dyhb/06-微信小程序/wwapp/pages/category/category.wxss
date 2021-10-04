@@ -1,0 +1,64 @@
+.category {
+  background-color: #f5f2ed;
+}
+.category .top {
+  font-size: 28rpx;
+  color: #666;
+  padding: 22rpx 30rpx 22rpx 30rpx;
+  border-bottom: 1px solid #dadada;
+  background-color: #fff;
+}
+.category .top .active {
+  color: #b93321;
+}
+.category .top text {
+  margin-right: 40rpx;
+}
+.category .center {
+  color: #666;
+  font-size: 28rpx;
+  padding: 22rpx 30rpx 22rpx 30rpx;
+  border-bottom: 1px solid #dadada;
+  background-color: #fff;
+}
+.category .center .actives {
+  color: #b93321;
+}
+.category .center text {
+  margin-right: 40rpx;
+}
+.category .bottom .bottom-all {
+  display: flex;
+  padding-bottom: 10rpx;
+  margin: 22rpx 30rpx 22rpx 30rpx;
+  border-bottom: 1px solid #dadada;
+}
+.category .bottom .bottom-all .right {
+  margin: 0 10rpx 15rpx 30rpx;
+}
+.category .bottom .bottom-all .right .title {
+  color: #000;
+  font-size: 32rpx;
+}
+.category .bottom .bottom-all .right .shortIntro {
+  margin: 12rpx 0 12rpx 0;
+  height: 76rpx;
+  line-height: 38rpx;
+  font-size: 28rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #999;
+}
+.category .bottom .bottom-all .right .minorCate {
+  position: relative;
+  height: 30rpx;
+  line-height: 30rpx;
+  margin-top: 5rpx;
+  color: #666;
+  font-size: 30rpx;
+}
+.category .bottom .bottom-all .right .minorCate .lately text {
+  color: #b93321;
+}

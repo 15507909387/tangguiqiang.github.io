@@ -1,4 +1,5 @@
 <!--components/book-item/book-item.wxml-->
+
 <wxs src="../../utils/looks.wxs" module="looks"></wxs>
 
 <view class="book" data-id="{{book._id}}" bindtap="navtodetail">
@@ -9,8 +10,8 @@
 <view class="title">{{book.title}}</view>
 <view class="shortIntro">{{book.shortIntro}}</view>
 <view class="minorCate">
-<text>{{book.minorCate}}</text> | 
-<text class="lately"><text>{{book.latelyFollower}}</text>人气</text>
+<text>{{book.author}}</text> | 
+<text class="lately"><text>{{ looks.parseCount(book.latelyFollower)}}</text>人气</text>
 </view>
 </view>
 </view>

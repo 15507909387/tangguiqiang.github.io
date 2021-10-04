@@ -3,3 +3,32 @@ page .van-nav-bar {
     background-color: #b83320;
 }
 
+
+
+.van-nav-bar .btn .masa {
+    color: rgb(255, 255, 255);
+    border: 1rpx solid #fff;
+    border-radius: 30rpx 0 0 30rpx;
+    padding: 10rpx 20rpx 10rpx 30rpx;
+    font-size: 28rpx;
+}
+
+.van-nav-bar .btn .activ {
+    color: rgb(126, 126, 126);
+    background-color: #fff;
+
+}
+
+.van-nav-bar .btn .masaright {
+    color: rgb(255, 255, 255);
+    border: 1rpx solid #fff;
+    border-radius: 0 30rpx  30rpx 0;
+    padding: 10rpx 20rpx 10rpx 30rpx;
+    font-size: 28rpx;
+}
+
+.van-nav-bar .btn .activright {
+    color: rgb(126, 126, 126);
+    background-color: #fff;
+    
+}

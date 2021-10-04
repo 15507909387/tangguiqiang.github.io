@@ -5,6 +5,27 @@ Page({
      * 页面的初始数据
      */
     data: {
+        books: null
+    },
+
+    navtodetail: function (event) {
+        // console.log(event.currentTarget.dataset.id)
+        wx.navigateTo({
+            url: '/pages/detail/detail?id=' + event.currentTarget.dataset.id,
+        })
+    },
+
+    click: function (e) {
+        console.log(e);
+        if (e.detail == 'right') {
+            var old = wx.getStorageSync('shelf') || []
+            var navFhelf = old.filter(item => item._id !== e.currentTarget.dataset.id)
+            this.setData({
+                books: navFhelf
+            })
+            console.log(navFhelf);
+            wx.setStorageSync('shelf', navFhelf)
+        }
 
     },
 
@@ -12,7 +33,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        // console.log(wx.getStorageSync('shelf'))
+        this.setData({
+            books: wx.getStorageSync('shelf') || []
+        })
     },
 
     /**
@@ -26,7 +50,10 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        // console.log(wx.getStorageSync('shelf'))
+        this.setData({
+            books: wx.getStorageSync('shelf') || []
+        })
     },
 
     /**

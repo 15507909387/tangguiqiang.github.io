@@ -1,2 +1,37 @@
 <!--pages/rank/rank.wxml-->
-<text>pages/rank/rank.wxml</text>
+<wxs src="../../utils/looks.wxs" module="looks"></wxs>
+<nav-barb>排行</nav-barb>
+<view class="rank">
+    <view class="gender">
+        <text bindtap="navGender" data-gender="male">男频</text>
+        <text bindtap="navGender" data-gender="female">女频</text>
+    </view>
+    <view class="cender">
+        <view class="rank">
+            <view bindtap="navrank" data-id="{{item._id}}" wx:for="{{rank[gender]}}" wx:key="item">
+                <text>{{item.shortTitle}}</text></view>
+        </view>
+        <view class="books">
+            <view wx:for="{{books}}" wx:key="index"
+            class="book"
+            bindtap="navtodetail"
+            data-id="{{item._id}}"
+            >
+                <view class="left">
+                    <image mode="aspectFill" style="width: 130rpx; height:175rpx;"
+                        src="{{looks.parseImageUrl(item.cover)}}"></image>
+                </view>
+                <view class="right">
+                    <view class="title">{{item.title}}</view>
+                    <view class="shortIntro">{{item.shortIntro}}</view>
+                    <view class="minorCate">
+                        <text class="lately">{{item.author}}</text>
+                        <text>{{item.minorCate}}</text> 
+                       
+                    </view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+</view>
